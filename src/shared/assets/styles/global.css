@@ -111,7 +111,7 @@
   --color-accent: var(--color-secondary-300)
   --color-accent-foreground: var(--color-on-surface);
 
-  --color-destructive: var(--color-error)
+  --color-destructive: var(--color-error);
   --color-border: var(--color-surface-strong);
   --color-input: var(--color-surface-strong);
   --color-ring: var(--color-primary-400);
