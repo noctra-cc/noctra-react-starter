@@ -26,9 +26,6 @@ export default function HomeScreen() {
         <Button size="lg" onClick={() => setCount((c) => c + 1)}>
           count is {count}
         </Button>
-        <p className="mt-3 text-sm text-gray-700">
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
       </div>
 
       <p className="text-sm opacity-70">
