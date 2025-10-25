@@ -1,19 +1,28 @@
 import { Button, Input } from "@/shared/components/ui";
 import { Link, useNavigate } from "react-router";
 import { toast } from "sonner";
-import { useState } from "react";
 import { useAuth } from "../hooks/useAuth";
+import { useForm } from "react-hook-form";
+import { loginSchema, type LoginForm } from "../typings";
+import { zodResolver } from "@hookform/resolvers/zod";
 
 export default function Login() {
   const navigate = useNavigate();
   const { signIn, loading } = useAuth();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
 
-  async function handleLogin(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
+  // Setup form
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<LoginForm>({
+    resolver: zodResolver(loginSchema),
+  });
+
+  // Handle submit
+  const onSubmit = async (data: LoginForm) => {
     try {
-      await signIn(email, password);
+      await signIn(data.email, data.password);
       toast.success("Logged in successfully!");
       setTimeout(() => navigate("/home", { replace: true }), 50);
     } catch (err) {
@@ -21,24 +30,35 @@ export default function Login() {
         err instanceof Error ? err.message : "Login failed. Try again.";
       toast.error(message);
     }
-  }
+  };
 
   return (
-    <form onSubmit={handleLogin} className="w-full space-y-4">
-      <Input
-        placeholder="Email"
-        type="email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        required
-      />
-      <Input
-        placeholder="Password"
-        type="password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-        required
-      />
+    <form onSubmit={handleSubmit(onSubmit)} className="w-full space-y-4">
+      {/* Email field */}
+      <div>
+        <Input
+          placeholder="Email"
+          type="email"
+          {...register("email")}
+          disabled={loading}
+        />
+        {errors.email && (
+          <p className="text-sm text-error mt-1">{errors.email.message}</p>
+        )}
+      </div>
+
+      {/* Password field */}
+      <div>
+        <Input
+          placeholder="Password"
+          type="password"
+          {...register("password")}
+          disabled={loading}
+        />
+        {errors.password && (
+          <p className="text-sm text-error mt-1">{errors.password.message}</p>
+        )}
+      </div>
 
       <Button type="submit" className="w-full" disabled={loading}>
         {loading ? "Logging in..." : "Log In"}
