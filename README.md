@@ -1,6 +1,6 @@
 # 🌙 noctra-react-starter
 
-**noctra-react-starter** is a modern React + TypeScript starter built with **Vite**, **Tailwind CSS**, **Zustand**, **Zod**, **React Hook Form**, and **Radix UI**.  
+**noctra-react-starter** is a modern React + TypeScript starter built with **Vite**, **Tailwind CSS**, **Zustand**, **Zod**, **React Hook Form**, and **Shadcn**.  
 It’s designed for scalability, modularity, and developer productivity — perfect for starting modern web apps fast.
 
 <table>
@@ -130,6 +130,78 @@ This starter embraces:
 - **Composable UI** → built around reusable, styled, and animated components
 - **Performance-first** → powered by Vite and React 19
 - **DX optimized** → hot reload, linting, and predictable folder structure
+
+<br/>
+<br/>
+<br/>
+
+# 🎨 Using shadcn/ui Components
+
+This starter includes a full **shadcn/ui** setup — a customizable component system built on **Radix UI**, **Tailwind CSS**, and **React**.
+
+You can easily add new UI components using the **shadcn CLI**.
+
+---
+
+## ⚙️ 1. Verify your setup
+
+Make sure a `components.json` file exists in the root directory.  
+It defines how and where new components are generated:
+
+```json
+{
+  "$schema": "https://ui.shadcn.com/schema.json",
+  "style": "default",
+  "rsc": false,
+  "tsx": true,
+  "tailwind": {
+    "config": "tailwind.config.ts",
+    "css": "src/shared/assets/styles/global.css",
+    "baseColor": "zinc",
+    "cssVariables": true
+  },
+  "aliases": {
+    "components": "@/shared/components",
+    "utils": "@/shared/lib/utils"
+  }
+}
+```
+
+If it’s missing, initialize it with:
+
+```bash
+npx shadcn@latest init
+```
+
+## 🧩 2. Add new components
+
+To add components, run the following command:
+
+```bash
+npx shadcn@latest add button
+```
+
+Or add multiple components at once:
+
+```bash
+npx shadcn@latest add input form dialog card
+```
+
+New components will be created under:
+
+```bash
+src/shared/components/ui/
+```
+
+Then import and use them anywhere:
+
+```js
+import { Button } from "@/shared/components/ui/button";
+
+export function Example() {
+return <Button variant="outline">Click me</Button>;
+}
+```
 
 ---
 
