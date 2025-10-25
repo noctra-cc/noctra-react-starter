@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { useThemeStore } from "../../stores/useThemeStore";
-import { Icon } from "@iconify/react";
+import { Moon, Sun } from "lucide-react";
 
 export function ThemeToggle() {
   const { theme, toggleTheme } = useThemeStore();
@@ -13,9 +13,9 @@ export function ThemeToggle() {
     >
       {/* Icon */}
       {theme === "dark" ? (
-        <Icon icon="solar:sun-bold" className="w-5 h-5 text-yellow-400" />
+        <Sun className="w-5 h-5 text-yellow-400" />
       ) : (
-        <Icon icon="solar:moon-bold" className="w-5 h-5 text-blue-600" />
+        <Moon className="w-5 h-5 text-blue-600" />
       )}
 
       {/* Label + Switch */}

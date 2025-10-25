@@ -1,73 +1,135 @@
-# React + TypeScript + Vite
+# 🌙 noctra-react-starter
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**noctra-react-starter** is a modern React + TypeScript starter built with **Vite**, **Tailwind CSS**, **Zustand**, **Zod**, **React Hook Form**, and **Radix UI**.  
+It’s designed for scalability, modularity, and developer productivity — perfect for starting modern web apps fast.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Tech Stack
 
-## React Compiler
+- ⚛️ **React 19** + **Vite 7** (blazing-fast dev server & build)
+- 💅 **Tailwind CSS 4** with `class-variance-authority` & `tailwind-merge`
+- 🎨 **Radix UI**, **Lucide Icons**, **Framer Motion**
+- 🧠 **Zustand** for global state management
+- 🧾 **React Hook Form** + **Zod** for form handling and validation
+- 🔄 **React Router v7**
+- 💬 **Sonner** for elegant toast notifications
+- 🌗 **next-themes** for dark/light theme toggling
+- ✅ **TypeScript** + **ESLint** (configured for modern React)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## 📁 Folder Structure
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```
+src/
+├─ config/ # Global configuration (routes, constants, etc.)
+├─ features/ # Feature-based architecture
+│ └─ [feature]/
+│   ├─ guards/ # Route guards and auth protection
+│   ├─ hooks/ # Auth-specific hooks
+│   ├─ screens/ # Login and Signup screens
+│   ├─ stores/ # Zustand stores for auth
+│   └─ typings/ # Type definitions (login.ts, user.ts, etc.)
+│
+├─ shared/ # Reusable code across features
+│ ├─ assets/
+│ │ ├─ images/
+│ │ └─ styles/
+│ ├─ components/ # Shared UI components (buttons, inputs, etc.)
+│ ├─ hooks/ # Shared reusable hooks
+│ ├─ layouts/ # Reusable layout components
+│ ├─ stores/ # Global Zustand stores (if needed)
+│ └─ lib/ # Utility functions / helpers
+│
+└─ main.tsx # App entry point
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+---
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## ⚙️ Setup
+
+### 1️⃣ Clone the repository
+```bash
+git clone https://github.com/noctra-cc/noctra-react-starter.git
+cd noctra-react-starter
 ```
+
+### 2️⃣ Install dependencies
+```bash
+# npm
+npm install
+# or yarn
+yarn
+# or pnpm
+pnpm install
+# or bun
+bun install
+```
+
+### 3️⃣ Configure environment variables
+```bash
+cp .env.example .env
+# then edit .env with your environment-specific values
+```
+
+### 4️⃣ Run the development server
+```bash
+# npm
+npm run dev
+# or bun
+bun run dev
+```
+Vite will start a local dev server, usually at
+👉 http://localhost:5173
+
+## 🧱 Available Scripts
+
+| Script | Description |
+|--------|--------------|
+| `npm run dev` | Start development server |
+| `npm run build` | Type-check and build the project |
+| `npm run lint` | Run ESLint to check code quality |
+| `npm run preview` | Preview the production build locally |
+
+---
+
+## 🧩 Key Libraries
+
+| Purpose | Library |
+|----------|----------|
+| UI components | Radix UI, Lucide React |
+| Styling | Tailwind CSS 4, class-variance-authority |
+| State management | Zustand |
+| Forms & validation | React Hook Form + Zod |
+| Routing | React Router v7 |
+| Animations | Framer Motion |
+| Notifications | Sonner |
+| Themes | next-themes |
+
+---
+
+## 🧠 Project Philosophy
+
+This starter embraces:
+
+- **Feature-based architecture** → scalable, isolated modules per domain  
+- **Type safety** → strong typing via TypeScript and Zod  
+- **Composable UI** → built around reusable, styled, and animated components  
+- **Performance-first** → powered by Vite and React 19  
+- **DX optimized** → hot reload, linting, and predictable folder structure  
+
+---
+
+## 🧰 Recommended Extensions (VS Code)
+
+- Tailwind CSS IntelliSense  
+- ESLint  
+- Prettier  
+- TypeScript React (tsx)  
+- Icons by Iconify  
+
+---
+
+**Made with ❤️ and ☕ by Noctra**
