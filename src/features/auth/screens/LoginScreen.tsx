@@ -35,30 +35,26 @@ export default function Login() {
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="w-full space-y-4">
       {/* Email field */}
-      <div>
-        <Input
-          placeholder="Email"
-          type="email"
-          {...register("email")}
-          disabled={loading}
-        />
-        {errors.email && (
-          <p className="text-sm text-error mt-1">{errors.email.message}</p>
-        )}
-      </div>
+      <Input
+        placeholder="Email"
+        type="email"
+        {...register("email")}
+        disabled={loading}
+      />
+      {errors.email && (
+        <p className="text-sm text-error mt-1">{errors.email.message}</p>
+      )}
 
       {/* Password field */}
-      <div>
-        <Input
-          placeholder="Password"
-          type="password"
-          {...register("password")}
-          disabled={loading}
-        />
-        {errors.password && (
-          <p className="text-sm text-error mt-1">{errors.password.message}</p>
-        )}
-      </div>
+      <Input
+        placeholder="Password"
+        type="password"
+        {...register("password")}
+        disabled={loading}
+      />
+      {errors.password && (
+        <p className="text-sm text-error mt-1">{errors.password.message}</p>
+      )}
 
       <Button type="submit" className="w-full" disabled={loading}>
         {loading ? "Logging in..." : "Log In"}
